@@ -1,0 +1,44 @@
+{
+    "name": "stevenmaguire/yelp-php",
+    "description": "A php client for consuming Yelp API",
+    "homepage" : "http://github.com/stevenmaguire/yelp-php",
+    "authors" : [
+        {
+            "name" : "Steven Maguire",
+            "email" : "stevenmaguire@gmail.com",
+            "homepage" : "http://stevenmaguire.com",
+            "role" : "Developer"
+        }
+    ],
+    "keywords": [
+        "api",
+        "oauth1",
+        "oauth2",
+        "yelp",
+        "php"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.6.0",
+        "guzzlehttp/oauth-subscriber": "~0.3"
+    },
+    "require-dev": {
+        "eloquent/phony": "^0.14.1",
+        "phpunit/phpunit": "~4.0",
+        "squizlabs/php_codesniffer": "~2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Stevenmaguire\\Yelp\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Stevenmaguire\\Yelp\\Test\\": "tests/src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "suggest": {
+        "stevenmaguire/oauth2-yelp": "Provides functionality to obtain OAuth2 access tokens, needed to execute Yelp API v3 codepaths"
+    }
+}

@@ -1,0 +1,83 @@
+/* --- LOADING ---*/
+
+// https://codepen.io/ShaunGreiner/pen/XdEWYo
+
+.loader  {
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    height:300px;
+    width:300px;
+    margin:auto;
+}
+
+.ball1 {
+    min-height:50px;
+    min-width:50px;
+    border-radius:50%;
+    background:$gray-200;
+    animation: bounce 1s alternate infinite ease-in-out,
+    flash 3s alternate infinite ease-in-out;
+    -webkit-animation: bounce 1s alternate infinite ease-in-out,
+    flash 3s alternate infinite ease-in-out;
+}
+.ball2 {
+    min-height:50px;
+    min-width:50px;
+    border-radius:50%;
+    background:$gray-200;
+    animation: bounce 1s .333s alternate infinite ease-in-out,
+    flash 3s 1s alternate infinite ease-in-out;
+    -webkit-animation: bounce 1s .333s alternate infinite ease-in-out,
+    flash 3s 1s alternate infinite ease-in-out;
+}
+.ball3 {
+    min-height:50px;
+    min-width:50px;
+    border-radius:50%;
+    background:$gray-200;
+    animation: bounce 1s .666s alternate infinite ease-in-out,
+    flash 3s 2s alternate infinite ease-in-out;
+    -webkit-animation: bounce 1s .666s alternate infinite ease-in-out,
+    flash 3s 2s alternate infinite ease-in-out;
+}
+
+@keyframes bounce {
+    from{
+        position:relative;
+        top:-10vh;
+    }
+    to{
+        position:relative;
+        top:10vh;
+    }
+}
+
+@keyframes flash{
+    from{
+        background:$gray-100;
+    }
+    to{
+        background:$gray-900;
+    }
+}
+
+@-webkit-keyframes bounce {
+    from{
+        position:relative;
+        top:-10vh;
+    }
+    to{
+        position:relative;
+        top:10vh;
+    }
+}
+
+@-webkit-keyframes flash{
+    from{
+        background:$gray-100;
+    }
+    to{
+        background:$gray-900;
+    }
+}

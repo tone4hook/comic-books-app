@@ -1,0 +1,87 @@
+/* --- SHOP LOCATOR ---*/
+
+#locator-wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#locator-wrapper.toggled {
+    padding-left: 250px;
+}
+
+#locator-wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#locator-wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Search Bar */
+
+.search-container {
+    position: relative;
+    width: 100%;
+}
+
+#location {
+    float: left;
+    width: 100%;
+}
+
+#search {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Sidebar */
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    overflow-y: auto;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.sidebar-nav {
+    width: 250px;
+}
+
+/* ---- Map Styles ----*/
+#map {
+    width: 100%;
+    height: 600px;
+    margin: 0 auto;
+}
+/* sidebar toggle media queries */
+
+@media(min-width:768px) {
+    #locator-wrapper {
+        padding-left: 250px;
+    }
+    #locator-wrapper.toggled {
+        padding-left: 0;
+    }
+    #sidebar-wrapper {
+        width: 250px;
+    }
+    #locator-wrapper.toggled #sidebar-wrapper {
+        width: 0px;
+    }
+    #locator-wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}

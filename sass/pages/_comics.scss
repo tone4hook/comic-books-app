@@ -1,0 +1,37 @@
+/* --- COMICS ---*/
+
+#new-comics-wrapper {
+    display: none;
+}
+
+/* Forms */
+#comics-form {
+    width: 100%;
+}
+
+.custom-select {
+    -webkit-appearance: none;
+}
+
+/* Comic Cards */
+#comics-container {
+    visibility: hidden;
+}
+
+.comics-card {
+    overflow-y: scroll;
+    height: 600px;
+}
+
+/* pagination */
+.pagination-container {
+    display: none;
+}
+
+/* --- MEDIA QUERIES --- */
+/* Small Devices, Tablets */
+@media only screen and (max-width : 767px) {
+    .pagination-container {
+        overflow-x: scroll;
+    }
+}

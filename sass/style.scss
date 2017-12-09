@@ -1,0 +1,14 @@
+// Main Sass File
+
+// Bootstrap 4 Sass
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// App
+@import "app";
+// Components
+@import "components/loading";
+// Pages
+@import "pages/comics";
+@import "pages/locator";
+// Font Awesome
+@import "font-awesome/font-awesome";
