@@ -15,11 +15,11 @@ A web application that features a comic book store locator and weekly new comic 
 **Node JS and Composer (Dependency Manager for PHP) are needed to run this project.**
 * Clone or download the repo
 * Open Terminal (command line) and navigate to the comic-books-app directory
-* Run **npm update**
+* Run `npm update`
 * Navigate to dist/php directory
-* Run **php composer.phar update**
-* From comic-books-app directory run **npm run dev** for local server
-* Build command is **npm run build**
+* Run `php composer.phar update`
+* From comic-books-app directory run `npm run dev` for local server
+* Build command is `npm run build`
 
 ### Prerequisites
 
