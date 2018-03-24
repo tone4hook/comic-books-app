@@ -6,7 +6,7 @@ class ApiCall {
 
         this._url = url;
 
-        this._postUrl = 'dist/php/verify.php';
+        this._postUrl = 'dist/php/yelp.php';
 
     } // /constructor
 

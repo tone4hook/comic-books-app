@@ -1,6 +1,0 @@
-{
-    "require": {
-        "stevenmaguire/yelp-php": "2.0.*",
-        "stevenmaguire/oauth2-yelp": "0.1.*"
-    }
-}

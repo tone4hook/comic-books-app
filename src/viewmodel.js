@@ -54,7 +54,7 @@ class ViewModel {
         this._flag = true;
 
         // Comic Vine API url with parameters
-        this._comicVineApiKey = 'yourComicVineApiKeyHere'
+        this._comicVineApiKey = 'YourComicVineAPIKey'
         // in string interpolation
         this._url = ko.pureComputed( () => {
             return `http://www.comicvine.com/api/`
