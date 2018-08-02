@@ -44,3 +44,12 @@ node_modules/
 ######################
 composer.phar
 dist/php/vendor/
+
+# Sass cache #
+######################
+.sass-cache/
+
+# Sublime Text #
+######################
+react.sublime-project
+react.sublime-workspace

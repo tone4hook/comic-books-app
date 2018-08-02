@@ -1,9 +1,5 @@
 /* --- COMICS ---*/
 
-#new-comics-wrapper {
-    display: none;
-}
-
 /* Forms */
 #comics-form {
     width: 100%;
@@ -26,12 +22,39 @@
 /* pagination */
 .pagination-container {
     display: none;
+    overflow: auto;
+    white-space: nowrap;
 }
 
-/* --- MEDIA QUERIES --- */
-/* Small Devices, Tablets */
-@media only screen and (max-width : 767px) {
-    .pagination-container {
-        overflow-x: scroll;
-    }
+/* Comic Book Items */
+.comic-item {
+	cursor: pointer;
+}
+.comic-img {
+	margin-bottom: 1rem;
+	box-shadow: 0 26px 24px -16px rgba(0,0,0,0.4);
+    -webkit-transition: transform 0.7s; /* Safari */
+    transition: transform 0.7s;
+}
+.comic-img:hover {
+    transform: translateY(-10px) ;
+}
+.comic-modal-img {
+	height: 400px;
+	margin-bottom: 1rem;
+	box-shadow: 0 26px 24px -16px rgba(0,0,0,0.4);
+}
+.comic-title {
+    -webkit-transition: color 0.7s; /* Safari */
+    transition: color 0.7s;
+}
+.comic-title:hover {
+	color: theme-color("primary");
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+	.comic-modal-img {
+		height: auto;
+	}
 }

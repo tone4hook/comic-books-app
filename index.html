@@ -29,22 +29,105 @@
   <![endif]-->
 </head>
 <body>
-
     <div class="container">
         <h3 class="text-center"><i class="fa fa-comment-o" aria-hidden="true"></i> Comic Books <small>App</small></h3>
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item">
-                <button type="button" class="active option-btn btn btn-outline-dark btn-block locator" data-bind="click: optionClicked">Store Locator</button>
+                <button type="button" class="active option-btn btn btn-outline-dark btn-block locator" data-bind="click: optionClicked">New Comics</button>
             </li>
             <li class="nav-item">
-                <button type="button" class="option-btn btn btn-outline-dark btn-block" data-bind="click: optionClicked">New Comics</button>
+                <button type="button" class="option-btn btn btn-outline-dark btn-block" data-bind="click: optionClicked">Store Locator</button>
             </li>
         </ul><!-- .nav -->
     </div><!-- .container -->
 
     <!-- .app-container -->
-    <div class="app-container">
+    <div class="app-container container">
+        <!-- #new-comics-wrapper -->
+        <div id="new-comics-wrapper">
 
+            <form id="comics-form">
+                <div class="row justify-content-center">
+                    <div class="col-sm-6">
+                        <div class="form-group d-flex h-100 mt-3">
+                            <input type="text" class="form-control form-control-lg align-self-center border border-dark" id="comics-filter" placeholder="Filter comic books by typing here..." data-bind="value: _comicsFilter, valueUpdate: 'keyup'">
+                        </div>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <div class="form-group mt-3">
+                        	<label for="week"><small>Release Week:</small></label>
+                            <select id="week" class="custom-select form-control-lg border border-dark" data-bind="foreach: _releaseWeeks, value: _currentWeek, event:{ change: weekSelected}">
+                                <option data-bind="text: start, value: {start: start, end: end}"></option>
+                            </select>
+                        </div>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </form><!-- /#comics-form -->
+
+            <div class="row">
+            	<div class="col-12 d-md-none">
+            		<small class="text-muted"><span class="text-danger">*</span>Hint: scroll left to right if pagination is long.</small>
+            	</div><!-- /.col -->
+            	<div class="col-12">
+	                <div class="pagination-container">
+	                	<div class="w-100 d-flex justify-content-center">
+		                    <nav class="d-inline-block" aria-label="Page navigation">
+		                        <ul class="pagination" data-bind="foreach: _pages">
+		                            <li data-bind="attr: { class: active +' page-item' }, click: $parent.pagination.bind($parent, $element)"><a class="page-link" href="#" data-bind="text: page"></a></li>
+		                        </ul>
+		                    </nav><!-- /nav -->
+	                	</div>
+	                </div><!-- /.pagination-container -->
+            	</div><!-- /.col -->
+            </div><!-- /.row -->
+
+            <!-- LOADING WIDGET -->
+            <div id="loader-container" class="row">
+                <div class="loader">
+                    <div class="ball1"></div>
+                    <div class="ball2"></div>
+                    <div class="ball3"></div>
+                </div>
+            </div><!-- /#loader-container -->
+
+            <div id="comics-container" class="row" data-bind="foreach: _filterComics">
+                <div class="col-12 col-md-4 col-lg-3">
+                	<div class="d-flex justify-content-center w-100 h-100 p-2">
+                		<div class="align-self-center">
+                			<img class="img-fluid comic-item comic-img" data-bind="attr:{src: image.small_url, alt: volume.name, 'data-id': id}, click: $parent.openModal.bind($parent, $element)">
+                			<h5 class="comic-item comic-title" data-bind="text: volume.name, attr:{'data-id': id}, click: $parent.openModal.bind($parent, $element)"></h4>
+                			<p class="mb-2 text-muted">Issue #<span data-bind="text: issue_number"></span></p>
+                			<small>Store Date:</small> <small class="text-muted" data-bind="text: store_date"></small>
+                		</div>
+                	</div>
+                	<!-- Modal -->
+                	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="comicBookDescription" aria-hidden="true" data-bind="attr: { id: id }">
+                		<div class="modal-dialog modal-dialog-centered" role="document">
+                			<div class="modal-content">
+                				<div class="modal-header">
+                					<h5 class="modal-title"><span data-bind="text: volume.name"></span><span class="pl-1">#</span><span data-bind="text: issue_number"></span></h5>
+                					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                						<span aria-hidden="true">&times;</span>
+                					</button>
+                				</div>
+                				<div class="modal-body">
+                					<div class="d-flex justify-content-center w-100">
+                						<img class="img-fluid comic-modal-img" data-bind="attr:{src: image.small_url, alt: volume.name, 'data-id': id}">
+                					</div>
+                					<p class="px-1 py-2 bg-light" data-bind="html: description"></p>
+                					<small class="pl-1">Store Date:</small> <small class="text-muted" data-bind="text: store_date"></small>
+                				</div>
+                				<div class="modal-footer">
+                					<button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                				</div>
+                			</div>
+                		</div>
+                	</div>
+                	<!-- /Modal -->
+                </div><!-- /.col -->
+            </div><!-- /#comics-container -->
+        </div>
+        <!-- /#new-comics-wrapper -->
 
         <!-- #locator-wrapper -->
         <div id="locator-wrapper">
@@ -65,10 +148,10 @@
             <!-- /#sidebar-wrapper -->
 
             <!-- Page Content -->
-            <div id="page-content-wrapper" class="container mt-2">
+            <div id="page-content-wrapper" class="mt-2">
                 <div class="row">
                     <div class="col-4">
-                        <button type="button" id="menu-toggle" class="btn btn-dark" data-bind="click: toggleSidebar"><i class="fa fa-list" aria-hidden="true"></i></button>
+                        <button type="button" id="menu-toggle" class="btn btn-dark" data-bind="click: toggleSidebar">List</button>
                     </div><!-- /.col -->
                     <div class="col-8">
                         <form class="form-inline" data-bind="submit: changeLocation">
@@ -86,72 +169,8 @@
                 </div><!-- /.row -->
             </div>
             <!-- /#page-content-wrapper -->
-
         </div>
         <!-- /#location-wrapper -->
-
-        <!-- #new-comics-wrapper -->
-        <div id="new-comics-wrapper" class="container">
-
-            <form id="comics-form">
-                <div class="row justify-content-center">
-                    <div class="col-sm-6">
-                        <div class="form-group mt-3">
-                            <input type="text" class="form-control form-control-lg border border-dark" id="comics-filter" placeholder="Enter a title, word, or whatever to filter" data-bind="value: _comicsFilter, valueUpdate: 'keyup'">
-                        </div>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <div class="form-group mt-3">
-                            <select class="custom-select form-control-lg border border-dark" data-bind="foreach: _releaseWeeks, value: _currentWeek, event:{ change: weekSelected}">
-                                <option data-bind="text: start, value: {start: start, end: end}"></option>
-                            </select>
-                        </div>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </form><!-- /#comics-form -->
-
-            <!-- LOADING WIDGET -->
-            <div id="loader-container" class="row">
-                <div class="loader">
-                    <div class="ball1"></div>
-                    <div class="ball2"></div>
-                    <div class="ball3"></div>
-                </div>
-            </div><!-- /#loader-container -->
-
-            <div id="comics-container" class="row" data-bind="foreach: _filterComics">
-
-                <div class="col-12 col-md-4 col-lg-3">
-                    <div class="card mb-3 comics-card">
-                        <img class="card-img-top img-fluid" data-bind="attr:{src: image.small_url, alt: volume.name}">
-                        <div class="card-body">
-                            <h4 class="card-title" data-bind="text: volume.name"></h4>
-                            <h6 class="card-subtitle mb-2 text-muted">Issue #<span data-bind="text: issue_number"></span></h6>
-                            <p>
-                                <a class="btn btn-dark desc-btn" data-toggle="collapse" aria-expanded="false" aria-controls="collapseDescription" data-bind="attr: { href: '#'+id }">View Description</a>
-                            <p>
-                            <p class="card-text description collapse" data-bind="attr: { id: id}">
-                                <small data-bind="html: description"></small>
-                            </p>
-                            <p class="card-text"><small>Store Date:</small> <small class="text-muted" data-bind="text: store_date"></small></p>
-                        </div>
-                    </div>
-                </div><!-- /.col -->
-
-            </div><!-- /.row -->
-
-            <div class="row justify-content-center">
-                <div class="pagination-container">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination" data-bind="foreach: _pages">
-                            <li data-bind="attr: { class: active +' page-item' }, click: $parent.pagination.bind($parent, $element)"><a class="page-link" href="#" data-bind="text: page"></a></li>
-                        </ul>
-                    </nav><!-- /nav -->
-                </div><!-- /.pagination-container -->
-            </div><!-- /.row -->
-
-        </div><!-- /#new-comics-wrapper -->
-
     </div><!-- /.app-container -->
 
     <!-- Knockout.js -->
@@ -160,7 +179,7 @@
     <script type="text/javascript" src="dist/app.bundle.js?v=1.0.0"></script>
     <!-- Google Maps JavaScript API -->
     <script onerror="loadError()" async defer
-    src="https://maps.googleapis.com/maps/api/js?key=YourGoogleMapsAPIKey&callback=initMap"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=YourGoogleMapsJavascriptApiKeyHere&callback=initMap"></script>
 
 </body>
 </html>

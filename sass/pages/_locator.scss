@@ -1,6 +1,7 @@
 /* --- SHOP LOCATOR ---*/
 
 #locator-wrapper {
+	display: none;
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -9,16 +10,16 @@
 }
 
 #locator-wrapper.toggled {
-    padding-left: 250px;
+    padding-left: 200px;
 }
 
 #locator-wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+    width: 200px;
 }
 
-#locator-wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: -250px;
+#locator-wrapper.toggled .page-content-wrapper {
+    position: relative;
+    margin-right: -200px;
 }
 
 /* Search Bar */
@@ -44,11 +45,11 @@
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
-    left: 250px;
+    left: 200px;
     overflow-y: auto;
     width: 0;
     height: 100%;
-    margin-left: -250px;
+    margin-left: -200px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -56,7 +57,7 @@
 }
 
 .sidebar-nav {
-    width: 250px;
+    width: 200px;
 }
 
 /* ---- Map Styles ----*/
@@ -65,23 +66,45 @@
     height: 600px;
     margin: 0 auto;
 }
-/* sidebar toggle media queries */
 
-@media(min-width:768px) {
-    #locator-wrapper {
-        padding-left: 250px;
-    }
-    #locator-wrapper.toggled {
-        padding-left: 0;
-    }
-    #sidebar-wrapper {
-        width: 250px;
-    }
-    #locator-wrapper.toggled #sidebar-wrapper {
-        width: 0px;
-    }
-    #locator-wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-    }
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+	.sidebar-nav {
+	    width: 250px;
+	}
+
+	#sidebar-wrapper {
+		left: 250px;
+		margin-left: -250px;
+	}
+
+	#locator-wrapper.toggled {
+	    padding-left: 250px;
+	}
+
+	#locator-wrapper.toggled #sidebar-wrapper {
+	    width: 250px;
+	}
+
+	#locator-wrapper.toggled .page-content-wrapper {
+	    position: relative;
+	    margin-right: -250px;
+	}
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+	#sidebar-wrapper {
+		left: 250px;
+		margin-left: -250px;
+	}
+
+	#locator-wrapper {
+	    padding-left: 0px;
+	}
+
+	#locator-wrapper.toggled {
+	    padding-left: 250px;
+	}
 }

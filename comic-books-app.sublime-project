@@ -1,0 +1,33 @@
+{
+	"folders":
+	[
+		{
+			"path": "/",
+			"name": "Root"
+		},
+		{
+			"path": "sass",
+			"name": "Sass"
+		},
+		{
+			"path": "src",
+			"name": "Source"
+		},
+		{
+			"path": "node_modules/bootstrap/scss",
+			"name": "Bootstrap Sass"
+		},
+		{
+			"path": "node_modules/bootstrap/js/dist",
+			"name": "Bootstrap JS"
+		},
+		{
+			"path": "dist",
+			"name": "Dist"
+		},
+		{
+			"path": "dist/php",
+			"name": "PHP"
+		}
+	]
+}
