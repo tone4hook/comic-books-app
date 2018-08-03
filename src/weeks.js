@@ -35,7 +35,7 @@ class Weeks {
 		while (i < 8) {
 			let start = new Date(this._date.getTime());
 
-			// end date is that week's Friday
+			// end date is that week's Wednesday
 			this._date.setDate(this._date.getDate() + 1);
 
 			let end = new Date(this._date.getTime());
@@ -47,7 +47,7 @@ class Weeks {
 
 			this._weeks.push(days); // add to weeks array
 
-			// move back to the previous Monday
+			// move back to the previous Tuesday
 			this._date.setDate(this._date.getDate() - 8);
 
 			i++;
